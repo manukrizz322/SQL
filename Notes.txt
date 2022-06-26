@@ -1,0 +1,45 @@
+1.MySql
+ It is a popular open source relational database management system.
+ It is used for developing various web based software development.
+ Developed by company MySQL AB.
+
+2.Features of MySQL
+ Relational Database Management System (RDBMS)
+ Easy to use
+ Storing Data is secure
+ Open Source & Free to download
+ Compatible on many operating systems
+
+3.What is Database?
+   client <-----> server<---->Database
+
+4.Datatypes
+ INT        11digits
+ TINYINT    4digits
+ SMALLINT   5digits
+ MEDIUMINT  9digits
+ BIGINT     20digits
+ FLOAT(m,d) 24 places for a float
+ DOUBLE(m,d)53 places for double.
+
+5.DateTime
+ DATE      'yyyy-mm-dd'
+ DATETIME  'yyyy-mm-dd hh:mm:ss'
+ TIMESTAMP 'YYYY-MM-DD HH:MM:SS'
+ TIME      'HH:MM:SS'
+ YEAR      2 or 4 digits
+
+6.STRING TYPE
+ VARCHAR(size)    max 255 characters
+ TINYTEXT(size)   max 255 characters
+ TEXT(size)       max 65535 characters
+ MEDIUMTEXT(size) 16777215 charcters
+ LONGTEXT(size)   4GB or 4294967295\
+ BINARY(size)     255 characters
+ VARBINARY(size)  255 characters
+
+7.Large Object(LOB)
+ TINYBLOB   255bytes
+ BLOB(size) 65535 bytes
+ MEDIUMBLOB 16777215 bytes
+ LONGTEXT   4gb or 4294967295 characters
