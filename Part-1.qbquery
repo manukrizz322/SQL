@@ -1,0 +1,158 @@
+﻿create database Employee_databases;
+drop database Employee_datas;
+show databases;
+use Employee_databases;
+
+create table users(id int not null auto_increment,name varchar(50) not null,age int not null,primary key(id));
+show tables;
+describe users;
+
+alter table users add gender varchar(50) not null after age;
+alter table users add city varchar(50) not null, add contact varchar(50) not null;
+
+alter table users modify contact varchar(25) not null;
+
+alter table users rename to students;
+
+
+select *from students;
+
+insert into students values(NULL,'Ram',25,'Male','Salem','98765435');
+insert into students(name,age,gender,city,contact) values('Ravi',23,'Male','Hosur','9789875190');
+insert into students(name,age,gender,city,contact) values('Kumar',24,'Male','Salem','9941484632');
+insert into students values(Null,'Sruthi',24,'Female','Namakal','9095548952'),
+                           (Null,'Rajesh',24,'Male','Salem','9095548952');
+insert into students values(Null,'Raby',28,'Female','Hosur','9095548951'),
+(Null,'Suresh',29,'Male','Namakal','9095548959');
+
+Delete from students where id=4;
+
+update students set city='Hosur',contact='123456789'
+where id=5;
+
+use employee_databases;
+create table demo(id INT NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, age INT NOT NULL,PRIMARY KEY(id));
+insert into demo values(Null,'Hello','45');
+select *from demo;
+truncate table demo;
+
+select name,age from students;
+select name,age,city from students
+where city='Hosur';
+select name,age,city from students
+where city='Hosur'and age>=23;
+select name,age,city from students
+where city='Namakal'or city='Hosur';
+select name,age,city from students
+where (city='Namakal'or city='Hosur')and age>=23;
+
+select distinct city from students;
+select count(distinct city) from students;
+select count(distinct city)as Total from students;
+
+/* To Select N number of recoords:*/
+select*from students limit 5;
+select*from students limit 5,3;
+select*from students limit 0,1;
+
+/* To select the very last record from a table:*/
+select *from students order by id desc limit 0,1;
+
+select max(age) from students;
+select min(age) from students;
+select avg(age) from students;
+select round(avg(age),0) from students;
+select round(avg(age),1) from students;
+select sum(age) from students;
+
+/* To select group wise records:*/
+select gender,count(id) from students group by gender;
+
+/* WILD CARD QUERIES:
+To select values starts with some letters:*/
+select name from students
+where name like 'Ra%';
+select name from students
+where name like '%am';
+select name from students
+where name like '%aj%';
+
+/* To select values having given keywords:*/
+select *from students
+where city in('Salem','Namakal');
+select * from students
+where city not in ('Salem','Namakal');
+select * from students
+where name not like 'Ra%';
+select name,age from students
+where age between 24 and 30;
+
+create table emp(
+id int not null auto_increment,
+name varchar(19) not null,
+design varchar(19) not null,
+DOJ date not null,
+primary key(id));
+describe emp;
+insert into emp values(null,'Guna','hr');
+
+insert into emp(name,design,DOJ) values
+ ('Dinesh','Manager','2018-09-10')
+,('Kumar','HR','2018-09-10')
+,('Sumesh','AMC','2018-09-11')
+,('sathish','Sales','2018-09-23')
+,('Manoj','Sales','2018-10-02');
+
+create table salary(
+sid int not null auto_increment,
+id int not null,
+sdate date not null,
+amt int not null,
+primary key(sid));
+
+
+insert into salary(id,sdate,amt) values
+(1,'2018-09-01','10000')
+,(2,'2018-09-01','7500')
+,(3,'2018-09-01','6000')
+,(4,'2018-09-01','4000');
+
+insert into salary(id,sdate,amt) values
+(6,'2018-09-01','4000');
+
+
+
+
+
+
+/* JOIN QUERIES:
+1.Inner Join(To select common values only)*/
+select emp.name,emp.design,salary.sdate,salary.amt
+from emp inner join salary
+on emp.id=salary.id;
+
+select emp.name,emp.design,salary.sdate,salary.amt
+from emp left join salary
+on emp.id=salary.id;
+
+select emp.name,emp.design,salary.sdate,salary.amt
+from emp right join salary
+on emp.id=salary.id;
+
+
+select * from salary;
+select * from emp;
+
+/* To select with cases:*/
+SELECT name,city,
+(CASE
+WHEN city='Salem'
+THEN 100
+WHEN city='Namakkal'
+THEN 200
+WHEN city='Chennai'
+THEN 300
+WHEN city='Hosur'
+THEN 400
+ELSE 0
+END) AS amt FROM students;
